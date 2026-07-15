@@ -21,8 +21,8 @@ settings = get_settings()
 
 PROVIDER_MAP = {
     "mtn": "mtn",
-    "telecel": "tel",
-    "tel": "tel",
+    "vodafone": "vod",
+    "vod": "vod",
     "airteltigo": "tgo",
     "tgo": "tgo",
 }

@@ -28,7 +28,7 @@ class Payment(Base):
 
     # Paystack mobile money specifics
     paystack_reference = Column(String, nullable=True, index=True)
-    momo_provider = Column(String, nullable=True)   # mtn, tel, tgo (AirtelTigo)
+    momo_provider = Column(String, nullable=True)   # mtn, vod, tgo (AirtelTigo)
     momo_phone = Column(String, nullable=True)
     gateway_response = Column(String, nullable=True)
     display_text = Column(String, nullable=True)    # e.g. "Approve on your phone"

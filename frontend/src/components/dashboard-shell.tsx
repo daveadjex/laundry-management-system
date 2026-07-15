@@ -3,9 +3,9 @@ import * as React from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useAuth } from "../lib/auth-context";
-import { Avatar, AvatarFallback } from "./ui/avatar";
-import { Button } from "./ui/button";
-import { ModeToggle } from "./mode-toggle";
+import { Avatar, AvatarFallback } from "../components/ui/avatar";
+import { Button } from "../components/ui/button";
+import { ModeToggle } from "../components/mode-toggle";
 import { cn } from "../lib/utils";
 import {
   LayoutDashboard, Users, ShoppingBasket, PlusCircle, UserCog, LogOut, WashingMachine, Bell,

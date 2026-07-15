@@ -65,7 +65,7 @@ export default function CustomersPage() {
       <div className="flex items-center justify-between">
         <div>
           <h1 className="text-2xl font-semibold tracking-tight">Customers</h1>
-          <p className="text-sm text-muted-foreground">Everyone who's dropped off laundry with you.</p>
+          <p className="text-sm text-muted-foreground">Everyone who&apos;s dropped off laundry with you.</p>
         </div>
         <Dialog open={open} onOpenChange={setOpen}>
           <DialogTrigger asChild>

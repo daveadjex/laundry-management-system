@@ -15,7 +15,7 @@ No email logins anywhere — every account signs in with a **username + password
 | Backend | Python, FastAPI, SQLAlchemy, SQLite |
 | Auth | JWT (python-jose) + bcrypt password hashing |
 | Frontend | Next.js 14 (App Router), TypeScript, Tailwind CSS, shadcn/ui |
-| Payments | Paystack Charge API — Mobile Money (MTN / Telecel Cash / AirtelTigo) |
+| Payments | Paystack Charge API — Mobile Money (MTN / Vodafone Cash / AirtelTigo) |
 | SMS | Africa's Talking |
 
 ## How payments work

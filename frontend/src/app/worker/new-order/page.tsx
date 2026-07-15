@@ -5,14 +5,13 @@ import { toast } from "sonner";
 import { Button } from "../../../components/ui/button";
 import { Input } from "../../../components/ui/input";
 import { Label } from "../../../components/ui/label";
-// import { Textarea } from "../../..components/ui/textarea";
+import { Textarea } from "../../../components/ui/textarea";
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "../../../components/ui/card";
 import { Select, SelectTrigger, SelectValue, SelectContent, SelectItem } from "../../../components/ui/select";
 import { Separator } from "../../../components/ui/separator";
 import { api, ApiError } from "../../../lib/api";
 import { CustomerOut, formatGHS } from "../../../lib/types";
 import { Loader2, Plus, Trash2, Search, UserPlus, CheckCircle2 } from "lucide-react";
-import { Textarea } from "@/src/components/ui/textarea";
 
 const SERVICE_PRESETS = ["Wash & Fold", "Wash & Iron", "Dry Clean", "Ironing Only", "Duvet / Beddings", "Starching", "Other"];
 
@@ -105,7 +104,7 @@ export default function NewOrderPage() {
     <div className="max-w-2xl space-y-6">
       <div>
         <h1 className="text-2xl font-semibold tracking-tight">New order</h1>
-        <p className="text-sm text-muted-foreground">Take in laundry, price the items, and we&#39;ll text the customer a receipt.</p>
+        <p className="text-sm text-muted-foreground">Take in laundry, price the items, and we&apos;ll text the customer a receipt.</p>
       </div>
 
       <Card>

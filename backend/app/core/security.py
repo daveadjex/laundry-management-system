@@ -1,27 +1,32 @@
 from datetime import datetime, timedelta, timezone
 from typing import Optional
-from jose import jwt, JWTError
-from passlib.context import CryptContext
-from app.core.config import get_settings
 import bcrypt
+from jose import jwt, JWTError
+from app.core.config import get_settings
+
 settings = get_settings()
-pwd_context = CryptContext(schemes=["bcrypt"], deprecated="auto")
+
+# We call bcrypt directly rather than going through passlib's CryptContext.
+# passlib 1.7.4 detects the bcrypt backend by reading bcrypt.__about__.__version__,
+# an attribute that newer bcrypt releases (4.1+) removed — this breaks hashing/
+# verification with a confusing "no attribute '__about__'" error depending on
+# whichever bcrypt version happens to get resolved on a given machine/Python
+# version. bcrypt's own hashpw/checkpw API has stayed stable across versions,
+# so calling it directly sidesteps the problem entirely.
+_BCRYPT_MAX_BYTES = 72  # bcrypt silently ignores bytes beyond this; we truncate explicitly
 
 
 def hash_password(password: str) -> str:
-    """Hash a clear text password using bcrypt without passlib."""
-    password_bytes = password.encode('utf-8')
-    salt = bcrypt.gensalt()
-    hashed_bytes = bcrypt.hashpw(password_bytes, salt)
-    return hashed_bytes.decode('utf-8')
+    pw_bytes = password.encode("utf-8")[:_BCRYPT_MAX_BYTES]
+    return bcrypt.hashpw(pw_bytes, bcrypt.gensalt()).decode("utf-8")
 
-def verify_password(plain_password: str, hashed_password: str) -> bool:
-    """Verify a plain text password against its stored hash."""
+
+def verify_password(plain: str, hashed: str) -> bool:
+    pw_bytes = plain.encode("utf-8")[:_BCRYPT_MAX_BYTES]
     try:
-        plain_bytes = plain_password.encode('utf-8')
-        hashed_bytes = hashed_password.encode('utf-8')
-        return bcrypt.checkpw(plain_bytes, hashed_bytes)
-    except Exception:
+        return bcrypt.checkpw(pw_bytes, hashed.encode("utf-8"))
+    except ValueError:
+        # hashed value isn't a valid bcrypt hash (e.g. corrupted/foreign data)
         return False
 
 

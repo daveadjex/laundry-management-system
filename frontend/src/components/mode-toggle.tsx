@@ -3,15 +3,18 @@
 import * as React from "react";
 import { Moon, Sun, Monitor } from "lucide-react";
 import { useTheme } from "next-themes";
-import { Button } from "./ui/button";
+import { Button } from "../components/ui/button";
 import {
   DropdownMenu, DropdownMenuTrigger, DropdownMenuContent, DropdownMenuItem,
-} from "./ui/dropdown-menu";
+} from "../components/ui/dropdown-menu";
 
 export function ModeToggle() {
   const { setTheme, theme } = useTheme();
   const [mounted, setMounted] = React.useState(false);
 
+  // Avoid rendering theme-dependent icons until mounted, so server and
+  // client markup match on first paint (next-themes reads localStorage,
+  // which isn't available during SSR).
   React.useEffect(() => setMounted(true), []);
 
   return (

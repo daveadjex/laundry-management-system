@@ -167,7 +167,7 @@ function CreateUserDialog({ open, onOpenChange, onCreated }: { open: boolean; on
       <DialogContent>
         <DialogHeader>
           <DialogTitle>Create an account</DialogTitle>
-          <DialogDescription>They'll be asked to change this password on first login.</DialogDescription>
+          <DialogDescription>They&apos;ll be asked to change this password on first login.</DialogDescription>
         </DialogHeader>
         <form onSubmit={submit} className="space-y-3">
           <div className="grid grid-cols-2 gap-3">
@@ -301,7 +301,7 @@ function ResetPasswordDialog({ user, onOpenChange }: { user: UserOut | null; onO
       <DialogContent>
         <DialogHeader>
           <DialogTitle>Reset password for {user.full_name}</DialogTitle>
-          <DialogDescription>They'll be asked to change it again on next login.</DialogDescription>
+          <DialogDescription>They&apos;ll be asked to change it again on next login.</DialogDescription>
         </DialogHeader>
         <form onSubmit={submit} className="space-y-3">
           <div className="space-y-1">

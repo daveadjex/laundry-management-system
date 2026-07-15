@@ -250,7 +250,7 @@ export function OrderDetailDialog({
                     <SelectTrigger><SelectValue /></SelectTrigger>
                     <SelectContent>
                       <SelectItem value="mtn">MTN Mobile Money</SelectItem>
-                      <SelectItem value="tel">Telecel Cash</SelectItem>
+                      <SelectItem value="vod">Vodafone Cash</SelectItem>
                       <SelectItem value="tgo">AirtelTigo Money</SelectItem>
                     </SelectContent>
                   </Select>

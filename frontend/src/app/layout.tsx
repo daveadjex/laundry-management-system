@@ -1,19 +1,21 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import { AuthProvider } from "../lib/auth-context";
+import { ThemeProvider } from "../components/theme-provider";
 import { Toaster } from "sonner";
-import { Outfit, Montserrat } from "next/font/google";
-import { cn } from "../lib/utils";
-import { ThemeProvider } from "next-themes";
+import { Outfit, Montserrat } from 'next/font/google'
+import { cn } from '../lib/utils'
 
 const outfit = Outfit({
-  subsets: ["latin"],
-  variable: "--font-heading",
+  subsets: ['latin'],
+  variable: '--font-heading',
+  display: 'swap',
 });
 
 const montserrat = Montserrat({
-  subsets: ["latin"],
-  variable: "--font-sans",
+  subsets: ['latin'],
+  variable: '--font-sans',
+  display: 'swap',
 });
 
 export const metadata: Metadata = {
@@ -23,14 +25,14 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" suppressHydrationWarning className={cn( outfit.variable, montserrat.variable, "font-sans")}>
+    <html lang="en" suppressHydrationWarning  className={cn(outfit.variable, montserrat.variable, 'font-sans')}>
       <body>
+        <ThemeProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange>
           <AuthProvider>
-            <ThemeProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange>
-              {children}
-              <Toaster richColors position="top-right" />
-            </ThemeProvider>
-         </AuthProvider>
+            {children}
+            <Toaster richColors position="top-right" />
+          </AuthProvider>
+        </ThemeProvider>
       </body>
     </html>
   );

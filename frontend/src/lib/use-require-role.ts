@@ -1,7 +1,7 @@
 "use client";
 import * as React from "react";
 import { useRouter } from "next/navigation";
-import { useAuth, Role } from "../lib/auth-context";
+import { useAuth, Role } from "./auth-context";
 
 export function useRequireRole(allowed: Role[]) {
   const { user, loading } = useAuth();

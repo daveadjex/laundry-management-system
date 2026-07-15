@@ -13,7 +13,7 @@ class MomoPaymentCreate(BaseModel):
     order_id: str
     amount: float = Field(gt=0)
     phone: str = Field(description="Customer MoMo number, e.g. 0241234567 or 233241234567")
-    provider: str = Field(description="mtn | tel | tgo (AirtelTigo)")
+    provider: str = Field(description="mtn | vod | tgo (AirtelTigo)")
 
 
 class MomoOtpSubmit(BaseModel):

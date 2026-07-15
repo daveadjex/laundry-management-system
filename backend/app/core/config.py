@@ -3,9 +3,11 @@ from functools import lru_cache
 
 
 class Settings(BaseSettings):
-    SECRET_KEY: str = ""
+    SECRET_KEY: str = "dev-secret-change-me"
     ALGORITHM: str = "HS256"
     ACCESS_TOKEN_EXPIRE_MINUTES: int = 480
+    REMEMBER_ME_EXPIRE_MINUTES: int = 43200  # 30 days
+    OTP_EXPIRE_MINUTES: int = 10
 
     DATABASE_URL: str = "sqlite:///./laundry.db"
     FRONTEND_ORIGIN: str = "http://localhost:3000"
@@ -19,7 +21,7 @@ class Settings(BaseSettings):
     MOCK_MODE: bool = True
 
     SEED_IT_ADMIN_USERNAME: str = "itadmin"
-    SEED_IT_ADMIN_PASSWORD: str = "ChangeMe123!"
+    SEED_IT_ADMIN_PASSWORD: str = "itadmin123"
 
     class Config:
         env_file = ".env"

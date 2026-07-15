@@ -55,7 +55,7 @@ def record_cash_payment(payload: CashPaymentCreate, db: Session = Depends(get_db
 def initiate_momo(payload: MomoPaymentCreate, db: Session = Depends(get_db), current_user: User = Depends(WORKER_OR_IT)):
     """
     Kicks off Paystack Mobile Money charge. The customer's phone will be
-    prompted by their network (MTN/T/AirtelTigo) to enter their MoMo PIN.
+    prompted by their network (MTN/Vodafone/AirtelTigo) to enter their MoMo PIN.
     Final confirmation arrives via webhook (see /webhook) or can be polled via /momo/verify/{reference}.
     """
     order = db.query(Order).filter(Order.id == payload.order_id).first()
