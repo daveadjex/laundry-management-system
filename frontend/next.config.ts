@@ -27,6 +27,12 @@ const nextConfig: NextConfig = {
     serverActions: {
       allowedOrigins: localGateway ? [`${localGateway}:3000`] : [],
     },
+
+    images: {
+      remotePatterns: [
+        { protocol: 'https', hostname: '**.supabase.co' },
+      ],
+    },
   },
   //allowedDevOrigins: localGateway ? [localGateway, `${localGateway}:3000`] : [],
 
